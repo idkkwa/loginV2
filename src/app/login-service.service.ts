@@ -13,4 +13,8 @@ export class LoginServiceService {
   public getBackendData() : Observable<Object>{
       return this.http.get(url);
   }
+
+  public getProductBackendData() : Observable<Object>{
+    return this.http.get('http://localhost:5000/api/v1/products/');
+}
 }

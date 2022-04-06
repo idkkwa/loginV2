@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { LoginServiceService } from './login-service.service';
 
 @Component({
@@ -6,16 +7,20 @@ import { LoginServiceService } from './login-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'loginV2';
-  fruits: string[]= ["Apple", "Grapes","Orange"]
-  
+  users: string[] = []
   constructor(private service: LoginServiceService){
 
   }
 
   ngOnInit(){
     this.service.getBackendData().subscribe((reponse)=>{
+      alert(reponse)
+    })
+
+    this.service.getProductBackendData().subscribe((reponse)=>{
       alert(reponse)
     })
   }
