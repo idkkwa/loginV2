@@ -15,13 +15,4 @@ export class AppComponent {
 
   }
 
-  ngOnInit(){
-    this.service.getBackendData().subscribe((reponse)=>{
-      alert(reponse)
-    })
-
-    this.service.getProductBackendData().subscribe((reponse)=>{
-      alert(reponse)
-    })
   }
-}

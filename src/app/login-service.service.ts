@@ -10,6 +10,10 @@ export class LoginServiceService {
 
   constructor(private http: HttpClient) { }
 
+  getAll() {
+    return this.http.get("http://localhost:5000/api/v1/products/");
+  }
+
   public getBackendData() : Observable<Object>{
       return this.http.get(url);
   }
