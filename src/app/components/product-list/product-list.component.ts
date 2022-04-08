@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +9,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
-
+  products?: Product[];
+  currentProduct: Product = {};
+  currentIndex = -1;
+  product_name = '';
+  constructor(private productService: ProductService) { }
   ngOnInit(): void {
+    this.retrieveProducts();
+  }
+  retrieveProducts(): void {
+    this.productService.getAll()
+      .subscribe(
+        data => {
+          this.products = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+  refreshList(): void {
+    this.retrieveProducts();
+    this.currentProduct = {};
+    this.currentIndex = -1;
+  }
+  setActiveProducts(product: Product, index: number): void {
+    this.currentProduct = product;
+    this.currentIndex = index;
+  }
+  removeAllProducts(): void {
+    this.productService.deleteAll()
+      .subscribe(
+        response => {
+          console.log(response);
+          this.refreshList();
+        },
+        error => {
+          console.log(error);
+        });
+  }
+  searchTitle(): void {
+    this.currentProduct = {};
+    this.currentIndex = -1;
+    this.productService.findByTitle(this.product_name)
+      .subscribe(
+        data => {
+          this.products = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
 }
