@@ -6,4 +6,5 @@ export class Product {
     product_color?: string;
     storage?: string;
     product_description?: string;
+    published?: boolean;
 }

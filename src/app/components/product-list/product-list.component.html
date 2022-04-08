@@ -61,7 +61,7 @@
         <label><strong>Status:</strong></label>
           {{ currentProduct.price ? "Published" : "Pending" }}
         </div>
-        <a class="badge badge-warning" routerLink="/products/{{ currentProduct.id }}">
+        <a class="badge badge-warning" routerLink="/http://localhost:5000/api/v1/products/{{ currentProduct.id }}">
           Edit
         </a>
       </div>
