@@ -1,0 +1,36 @@
+<p>add-login works!</p>
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            required
+            [(ngModel)]="login.username"
+            name="username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input          
+            type="password"
+            class="form-control"
+            id="password"
+            required
+            [(ngModel)]="login.password"
+            name="password"
+          />
+        </div>
+          <button (click)="saveUser()" class="btn btn-success">Create User</button>
+        </div>
+        <div *ngIf="submitted">
+          <h4>User was submitted successfully!</h4>
+          <button class="btn btn-success" (click)="newUser()">Add</button>
+        </div>
+      </div>
+</div>

@@ -63,6 +63,8 @@
         <a class="badge badge-warning" routerLink="/products/{{ currentProduct.id }}">
           Edit
         </a>
+        <br>
+        <button>(click)="addProductToCart(product)">+</button>
       </div>
       <div *ngIf="!currentProduct"> 
         <br />
