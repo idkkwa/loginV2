@@ -3,7 +3,6 @@ import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -29,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
     this.message = '';
     this.getProduct(this.route.snapshot.params.id);
   }
+
   getProduct(id: string): void {
     this.productService.get(id)
       .subscribe(
@@ -40,6 +40,7 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         });
   }
+
   updatePublished(status: boolean): void {
     const data = {
       product_name: this.currentProduct.product_name,
@@ -63,6 +64,7 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         });
   }
+
   updateProduct(): void {
     this.message = '';
     this.productService.update(this.currentProduct.id, this.currentProduct)
@@ -75,6 +77,7 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         });
   }
+
   deleteProduct(): void {
     this.productService.delete(this.currentProduct.id)
       .subscribe(

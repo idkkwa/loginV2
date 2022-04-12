@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 
-
-
 const baseUrl = 'http://localhost:5000/api/v1/products/';
 
 @Injectable({
@@ -32,7 +30,7 @@ export class ProductService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-  findByTitle(title: any): Observable<Product[]> {
-    return this.http.get<Product[]>(`${baseUrl}?title=${title}`);
+  findByProduct(product: any): Observable<Product[]> {
+    return this.http.get<Product[]>(`${baseUrl}?product_name=${product}`);
   }
 }

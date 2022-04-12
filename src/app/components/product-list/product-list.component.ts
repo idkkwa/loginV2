@@ -48,10 +48,10 @@ export class ProductListComponent implements OnInit {
           console.log(error);
         });
   }
-  searchTitle(): void {
+  searchProduct(): void {
     this.currentProduct = {};
     this.currentIndex = -1;
-    this.productService.findByTitle(this.product_name)
+    this.productService.findByProduct(this.product_name)
       .subscribe(
         data => {
           this.products = data;

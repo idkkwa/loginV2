@@ -1,4 +1,3 @@
-<p>product-list works!</p>
 <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
@@ -12,7 +11,7 @@
           <button
             class="btn btn-outline-secondary"
             type="button"
-            (click)="searchTitle()"
+            (click)="searchProduct()"
           >
             Search
           </button>
@@ -61,13 +60,13 @@
         <label><strong>Status:</strong></label>
           {{ currentProduct.price ? "Published" : "Pending" }}
         </div>
-        <a class="badge badge-warning" routerLink="/http://localhost:5000/api/v1/products/{{ currentProduct.id }}">
+        <a class="badge badge-warning" routerLink="/products/{{ currentProduct.id }}">
           Edit
         </a>
       </div>
-      <div *ngIf="!currentProduct">
+      <div *ngIf="!currentProduct"> 
         <br />
-        <p>Please click on a Tutorial...</p>
+        <p>Please click on a Product...</p>
       </div>
     </div>
   </div>
