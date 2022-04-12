@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-   userName!: string;
+   username!: string;
    password!: string;
    formData!: FormGroup;
 
@@ -19,19 +19,19 @@ export class LoginComponent implements OnInit {
 
    ngOnInit() {
       this.formData = new FormGroup({
-         userName: new FormControl("admin"),
+         username: new FormControl("admin"),
          password: new FormControl("admin"),
       });
    }
 
    onClickSubmit(data: any) {
-      this.userName = data.userName;
+      this.username = data.username;
       this.password = data.password;
 
-      console.log("Login page: " + this.userName);
+      console.log("Login page: " + this.username);
       console.log("Login page: " + this.password);
 
-      this.authService.login(this.userName, this.password)
+      this.authService.login(this.username, this.password)
          .subscribe( data => { 
             console.log("Is Login Success: " + data); 
       
