@@ -17,6 +17,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { AddLoginComponent } from './components/add-login/add-login.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AddLoginComponent } from './components/add-login/add-login.component';
     ProductListComponent,
     ShoppingCartComponent,
     AddLoginComponent,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
