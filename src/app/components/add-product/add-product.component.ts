@@ -15,12 +15,12 @@ export class AddProductComponent implements OnInit {
     product_color: '',
     storage: '',
     product_description: '',
+    published: false
   };
 
   submitted = false;
   constructor(private productService: ProductService) { }
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   saveProduct(): void {
     const data = {
@@ -52,6 +52,7 @@ export class AddProductComponent implements OnInit {
         product_color: '',
         storage: '',
         product_description: '',
+        published: false
       };
     }
 }

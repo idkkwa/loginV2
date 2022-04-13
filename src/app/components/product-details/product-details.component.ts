@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
     product_color: '',
     storage: '',
     product_description: '',
+    published: false
   };
 
   message = '';

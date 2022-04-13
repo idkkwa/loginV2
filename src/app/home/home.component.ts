@@ -19,11 +19,8 @@ fruits: string[]= ["Apple", "Grapes","Orange"]
 
   constructor(private http:HttpClient) { }
 
-  getAllProducts(): Observable<any> {
-    return this.http.get(baseURL);
-  }
-
   ngOnInit(): void {
   }
 
 }
+
