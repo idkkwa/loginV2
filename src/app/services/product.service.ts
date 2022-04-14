@@ -30,7 +30,7 @@ export class ProductService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-  findByProduct(product: any): Observable<Product[]> {
-    return this.http.get<Product[]>(`${baseUrl}?product_name=${product}`);
-  }
+  // findByProduct(product: any): Observable<Product[]> {
+  //   return this.http.get<Product[]>(`${baseUrl}?product_name=${product}`);
+  // }
 }

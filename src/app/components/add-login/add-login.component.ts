@@ -15,8 +15,7 @@ export class AddLoginComponent implements OnInit {
   
     submitted = false;
     constructor(private loginService: LoginService) { }
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
   
     saveUser(): void {
       const data = {

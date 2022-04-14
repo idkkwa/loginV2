@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-product-details',
@@ -25,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private router: Router) { }
+    
   ngOnInit(): void {
     this.message = '';
     this.getProduct(this.route.snapshot.params.id);
@@ -90,4 +93,40 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         });
   }
+
+
+  // currentProduct: Product = {
+  //   product_name: '',
+  //   brand_name: '',
+  //   price: '',
+  //   product_color: '',
+  //   storage: '',
+  //   product_description: '',
+  //   published: false
+  // };
+
+  //   ngOnInit(): void {}
+
+  // productForm = new FormGroup({
+  //   productName: new FormControl('', Validators.required),
+  //   brandName: new FormControl('', Validators.required),
+  //   price: new FormControl(this.currentProduct.price),
+  // });
+
+  // get productName(): any {
+  //   return this.productForm.get('productName');
+  // }
+
+  // get brandName(): any {
+  //   return this.productForm.get('brandName');
+  // }
+
+  // get price(): any {
+  //   return this.productForm.get('price');
+  // }
+  // onFormSubmit(): void {
+  // console.log('Product Name:' + this.productForm.get('productName').value);
+  // console.log('Brand Name:' + this.productForm.get('brandName').value);
+  // console.log('Price:' + this.productForm.get('price').value);
+  // }
 }

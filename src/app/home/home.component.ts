@@ -1,6 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 const baseURL = 'http://localhost:5000/api/v1/products';
 
@@ -19,8 +18,7 @@ fruits: string[]= ["Apple", "Grapes","Orange"]
 
   constructor(private http:HttpClient) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
 

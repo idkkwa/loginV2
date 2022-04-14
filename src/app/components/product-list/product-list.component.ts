@@ -1,4 +1,3 @@
-import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
@@ -50,18 +49,18 @@ export class ProductListComponent implements OnInit {
           console.log(error);
         });
   }
-  searchProduct(): void {
-    this.currentProduct = {};
-    this.currentIndex = -1;
-    this.productService.findByProduct(this.product_name)
-      .subscribe(
-        data => {
-          this.products = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-  }
+  // searchProduct(): void {
+  //   this.currentProduct = {};
+  //   this.currentIndex = -1;
+  //   this.productService.findByProduct(this.product_name)
+  //     .subscribe(
+  //       data => {
+  //         this.products = data;
+  //         console.log(data);
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       });
+  // }
 
 }

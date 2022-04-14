@@ -1,6 +1,7 @@
 <p>product-details works!</p>
+
 <div>
-    <div *ngIf="currentProduct.id" class="edit-form">
+    <div *ngIf="currentProduct.id != ' ' " class="edit-form">
     <h4>Product</h4>
     <form>
         <div class="form-group">
@@ -105,4 +106,18 @@
       <br />
       <p>This Product Cannot Be Accessed...</p>
     </div>
-  </div>
+  </div> -->
+
+  <!-- <form [formGroup] = "productForm" (ngSubmit)="onFormSubmit()">
+    <input formControlName="name" />
+    <label *ngIf="productName.invalid" [ngClass] = "'error'"> Name is required. </label>
+    
+    <input formControlName="age" />
+    <label *ngIf="brandName.invalid" [ngClass] = "'error'"> Age is required. </label>
+    
+    <input formControlName="college" />
+    <label *ngIf="price.invalid" [ngClass] = "'error'"> College is required. </label>
+    <div>
+      <button type="submit">Send</button>
+    </div>
+  </form> -->
