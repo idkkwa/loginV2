@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,6 +13,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ProductDetailsComponent implements OnInit {
   
   currentProduct: Product = {
+    id: this.route.snapshot.params.id,
     product_name: '',
     brand_name: '',
     price: '',
@@ -23,6 +24,7 @@ export class ProductDetailsComponent implements OnInit {
   };
 
   message = '';
+  
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -30,10 +32,13 @@ export class ProductDetailsComponent implements OnInit {
     
   ngOnInit(): void {
     this.message = '';
-    this.getProduct(this.route.snapshot.params.id);
+    // this.getProduct(this.route.snapshot.paramMap.get('id'));
+    console.log("THE PRODUCT: ",this.getProduct(this.route.snapshot.paramMap.get('id')))
+    console.log("The ID is: ",this.route.snapshot.paramMap.get('id'))
+    console.log("The other way to get ID:",this.route.snapshot.params.id)
   }
 
-  getProduct(id: string): void {
+  getProduct(id: any): void {
     this.productService.get(id)
       .subscribe(
         data => {
@@ -56,8 +61,7 @@ export class ProductDetailsComponent implements OnInit {
       published: status
     };
 
-    this.message = '';
-    this.productService.update(this.currentProduct.id, data)
+    this.productService.update(this.route.snapshot.paramMap.get('id'), data)
       .subscribe(
         response => {
           this.currentProduct.published = status;
@@ -71,7 +75,7 @@ export class ProductDetailsComponent implements OnInit {
 
   updateProduct(): void {
     this.message = '';
-    this.productService.update(this.currentProduct.id, this.currentProduct)
+    this.productService.update(this.route.snapshot.paramMap.get('id'), this.currentProduct)
       .subscribe(
         response => {
           console.log(response);
@@ -83,7 +87,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    this.productService.delete(this.currentProduct.id)
+    this.productService.delete(this.route.snapshot.paramMap.get('id'))
       .subscribe(
         response => {
           console.log(response);
@@ -93,7 +97,6 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         });
   }
-
 
   // currentProduct: Product = {
   //   product_name: '',

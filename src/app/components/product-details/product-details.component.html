@@ -1,7 +1,9 @@
 <p>product-details works!</p>
 
-<div>
-    <div *ngIf="currentProduct.id != ' ' " class="edit-form">
+<p>ID: {{currentProduct.product_name}}</p>
+
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentProduct" class="edit-form">
     <h4>Product</h4>
     <form>
         <div class="form-group">
@@ -102,11 +104,11 @@
       </button>
       <p>{{ message }}</p>
     </div>
-    <div *ngIf="!currentProduct.id">
+    <div *ngIf="!currentProduct">
       <br />
       <p>This Product Cannot Be Accessed...</p>
     </div>
-  </div> -->
+  </div>
 
   <!-- <form [formGroup] = "productForm" (ngSubmit)="onFormSubmit()">
     <input formControlName="name" />

@@ -1,0 +1,41 @@
+<p>product-info works!</p>
+<!-- <label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name">
+
+<p>Value: {{ name.value }}</p>
+<button type="button" (click)="updateName()">Update Name</button> -->
+
+<form [formGroup]="profileForm">
+
+    <label for="">Product Name:</label>
+    <input id="product-name" type="text" formControlName="productName">
+    <br>
+  
+    <label for="brand-name">Brand Name: </label>
+    <input id="brand-name" type="text" formControlName="brandName">
+    <br>
+
+    <label for="price-name">Price: </label>
+    <input id="price-name" type="text" formControlName="price">
+    <br>
+
+    <label for="product-color">Product Color: </label>
+    <input id="product-color" type="text" formControlName="productColor">
+    <br>
+
+    <label for="storage-name">Storage: </label>
+    <input id="storage-name" type="text" formControlName="storage">
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateProduct()"
+      >
+        Update
+      </button>
+
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+  
