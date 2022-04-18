@@ -61,7 +61,7 @@ export class ProductDetailsComponent implements OnInit {
       published: status
     };
 
-    this.productService.update(this.route.snapshot.paramMap.get('id'), data)
+    this.productService.update(this.route.snapshot.params.id, data)
       .subscribe(
         response => {
           this.currentProduct.published = status;
@@ -74,8 +74,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   updateProduct(): void {
+    const data = {
+      product_name: this.currentProduct.product_name,
+      brand_name: this.currentProduct.brand_name,
+      price: this.currentProduct.price,
+      product_color: this.currentProduct.product_color,
+      storage: this.currentProduct.storage,
+      product_description: this.currentProduct.product_description,
+    }
+
     this.message = '';
-    this.productService.update(this.route.snapshot.paramMap.get('id'), this.currentProduct)
+    this.productService.update(this.route.snapshot.paramMap.get('id'), data)
       .subscribe(
         response => {
           console.log(response);
@@ -98,38 +107,4 @@ export class ProductDetailsComponent implements OnInit {
         });
   }
 
-  // currentProduct: Product = {
-  //   product_name: '',
-  //   brand_name: '',
-  //   price: '',
-  //   product_color: '',
-  //   storage: '',
-  //   product_description: '',
-  //   published: false
-  // };
-
-  //   ngOnInit(): void {}
-
-  // productForm = new FormGroup({
-  //   productName: new FormControl('', Validators.required),
-  //   brandName: new FormControl('', Validators.required),
-  //   price: new FormControl(this.currentProduct.price),
-  // });
-
-  // get productName(): any {
-  //   return this.productForm.get('productName');
-  // }
-
-  // get brandName(): any {
-  //   return this.productForm.get('brandName');
-  // }
-
-  // get price(): any {
-  //   return this.productForm.get('price');
-  // }
-  // onFormSubmit(): void {
-  // console.log('Product Name:' + this.productForm.get('productName').value);
-  // console.log('Brand Name:' + this.productForm.get('brandName').value);
-  // console.log('Price:' + this.productForm.get('price').value);
-  // }
 }

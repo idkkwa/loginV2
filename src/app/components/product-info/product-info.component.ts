@@ -34,8 +34,28 @@ export class ProductInfoComponent implements OnInit {
   //       });
   // }
 
+
+  name = new FormControl('');
+
+  profileForm = new FormGroup({
+    productName: new FormControl(''),
+    brandName: new FormControl(''),
+    price: new FormControl(''),
+    productColor: new FormControl(''),
+    storage: new FormControl(''),
+    productDescription: new FormControl(''),
+  });
+
+
+    productName = new FormControl('')
+    brandName = new FormControl('')
+    price = new FormControl('')
+    productColor = new FormControl('')
+    storage = new FormControl('')
+    productDescription = new FormControl('')
+
   currentProduct: Product = {
-    id: '',
+    id: 26,
     product_name: '',
     brand_name: '',
     price: '',
@@ -45,24 +65,16 @@ export class ProductInfoComponent implements OnInit {
     published: false
   };
 
-  name = new FormControl('');
 
-  profileForm = new FormGroup({
-    brandName: new FormControl(''),
-    productName: new FormControl(''),
-    price: new FormControl(''),
-    productColor: new FormControl(''),
-    storage: new FormControl(''),
-    productDescription: new FormControl(''),
-  });
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.profileForm.value);
+    this.productName.setValue(this.currentProduct.product_name)
   }
 
   updateName() {
-    this.name.setValue("Hey");
+    this.name.setValue(this.currentProduct);
   }
 
   updateProduct(): void {
