@@ -32,8 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     
   ngOnInit(): void {
     this.message = '';
-    // this.getProduct(this.route.snapshot.paramMap.get('id'));
-    console.log("THE PRODUCT: ",this.getProduct(this.route.snapshot.paramMap.get('id')))
+    this.getProduct(this.route.snapshot.paramMap.get('id'));
     console.log("The ID is: ",this.route.snapshot.paramMap.get('id'))
     console.log("The other way to get ID:",this.route.snapshot.params.id)
   }
