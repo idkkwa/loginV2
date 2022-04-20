@@ -5,6 +5,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'addproducts', component:AddProductComponent},
   {path:'products/:id', component:ProductDetailsComponent},
   {path:'register', component:AddLoginComponent},
-  {path: 'form', component:ProductInfoComponent}
+  {path: 'form', component:ProductInfoComponent},
+  {path: 'cart', component:ShoppingCartComponent}
 ];
 
 @NgModule({

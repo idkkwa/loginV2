@@ -1,22 +1,5 @@
 <div class="list row">
-    <div class="col-md-8">
-      <!-- <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by Product Name"
-          [(ngModel)]="product_name"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchProduct()"
-          >
-            Search
-          </button>
-        </div>
-      </div> -->
+    <!-- <div class="col-md-8">
       <div class="container mt-5" style="max-width: 550px;">
         <div class="form-group">
           <input type="text" class="form-control mb-4" placeholder="Search" [(ngModel)]="query" id="listSearch">
@@ -33,9 +16,9 @@
         </div>
       
       </div>
-    </div>
+    </div> -->
     
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <h4>Product List</h4>
       <ul class="list-group">
         <li
@@ -50,9 +33,9 @@
       <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()">
         Remove All
       </button>
-    </div>
+    </div> -->
 
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <div *ngIf="currentProduct.id">
         <h4>Product</h4>
         <div>
@@ -92,5 +75,11 @@
         <br />
         <p>Please click on a Product...</p>
       </div>
+    </div> -->
+  </div>
+
+  <div class="row">
+    <div class="col-md-5" *ngFor="let product of products;">
+      <app-product-info [currentProduct]="product"></app-product-info>
     </div>
   </div>

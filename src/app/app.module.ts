@@ -19,7 +19,9 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { AddLoginComponent } from './components/add-login/add-login.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
-
+import { FiltersComponent } from './components/shopping-cart/filters/filters.component';
+import { CartComponent } from './components/shopping-cart/cart/cart.component';
+import { CartItemComponent } from './components/shopping-cart/cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,9 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     AddLoginComponent,
     SearchFilterPipe,
     ProductInfoComponent,
+    FiltersComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
