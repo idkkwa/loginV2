@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-product-info',
@@ -97,36 +98,38 @@ export class ProductInfoComponent implements OnInit {
 public searchFilter: any = '';
   query: any
   products?: Product[];
-  //currentProduct: Product = {};
   currentIndex = -1;
   product_name = '';
 
-  @Input()
-  currentProduct: Product = {}; 
+  @Input() currentProduct: Product = {}; 
 
-  constructor(private productService: ProductService) { }
-  ngOnInit(): void {
-    //this.retrieveProducts();
-  }
-  // retrieveProducts(): void {
-  //   this.productService.getAll()
-  //     .subscribe(
-  //       data => {
-  //         this.products = data;
-  //         console.log(data);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-  // refreshList(): void {
-  //   this.retrieveProducts();
-  //   this.currentProduct = {};
-  //   this.currentIndex = -1;
-  // }
+  
+  constructor(private msg: MessengerService) { }
+  
+  ngOnInit() {}
 
-  // setActiveProducts(product: Product, index: number): void {
-  //   this.currentProduct = product;
-  //   this.currentIndex = index;
-  // }
+    handleAddToCart(){
+      this.msg.sendMsg(this.currentProduct)
+    }
+    // retrieveProducts(): void {
+    //   this.productService.getAll()
+    //     .subscribe(
+    //       data => {
+    //         this.products = data;
+    //         console.log(data);
+    //       },
+    //       error => {
+    //         console.log(error);
+    //       });
+    // }
+    // refreshList(): void {
+    //   this.retrieveProducts();
+    //   this.currentProduct = {};
+    //   this.currentIndex = -1;
+    // }
+
+    // setActiveProducts(product: Product, index: number): void {
+    //   this.currentProduct = product;
+    //   this.currentIndex = index;
+    // }
 }
