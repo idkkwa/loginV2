@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
    password!: string;
    formData!: FormGroup;
 
+   model: any = {}
+
    constructor(private authService : AuthServiceService, private router : Router) { }
 
    ngOnInit() {
@@ -22,6 +24,11 @@ export class LoginComponent implements OnInit {
          username: new FormControl("admin"),
          password: new FormControl("admin"),
       });
+   }
+
+   login(){
+     
+      console.log(this.model)
    }
 
    onClickSubmit(data: any) {

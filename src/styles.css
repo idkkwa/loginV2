@@ -33,3 +33,9 @@ body { margin: 0; font-family: 'Times New Roman', Times, serif }
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+.login-card h2{
+    text-transform: uppercase;
+    font-size: medium;
+
+}
