@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { observable, PartialObserver } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { MessengerService } from 'src/app/services/messenger.service';
 @Component({
@@ -21,29 +22,42 @@ export class CartComponent implements OnInit {
         //console.log(product)
     })
 
-    
+    this.msg.getMsg().subscribe(product => {
+      console.log(product)
+  })
   }
 
   addProductToCart(product: Product){
 
-    for( let i in this.cartItems){
-      if(this.cartItems[i].productName === product.product_name){
-        this.cartItems[i].qty++
-      }
-
-      else{
-        this.cartItems.push({
-          productName: product.product_name,
-          qty: 1,
-          price: product.price
-        })
+    if(this.cartItems === 0) {
+      this.cartItems.push({
+        productName: product.product_name,
+        qty: product.qty,
+        price: product.price
+      })
+    }
+    else{
+      for( let i in this.cartItems){
+        if(this.cartItems[i].productName === product.product_name){
+          this.cartItems[i].qty++
+        }
+  
+        else{
+          this.cartItems.push({
+            productName: product.product_name,
+            qty: product.qty,
+            price: product.price
+          })
+        }
       }
     }
+
+    
 
 
 
     this.cartTotal = 0;
-    this.cartItems.forEach((item: { qty: number; price: number; }) => {
+    this.cartItems.forEach(item => {
       this.cartTotal += (item.qty * item.price)
     })
   }

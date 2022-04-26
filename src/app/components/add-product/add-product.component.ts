@@ -15,7 +15,7 @@ export class AddProductComponent implements OnInit {
     product_color: '',
     storage: '',
     product_description: '',
-    published: false
+    //published: false
   };
 
   submitted = false;
@@ -52,7 +52,8 @@ export class AddProductComponent implements OnInit {
         product_color: '',
         storage: '',
         product_description: '',
-        published: false
+        qty: 1
+        //published: false
       };
     }
 }

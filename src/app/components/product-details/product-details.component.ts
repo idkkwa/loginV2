@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
     product_color: '',
     storage: '',
     product_description: '',
-    published: false
+    //published: false
   };
 
   message = '';
@@ -49,28 +49,28 @@ export class ProductDetailsComponent implements OnInit {
         });
   }
 
-  updatePublished(status: boolean): void {
-    const data = {
-      product_name: this.currentProduct.product_name,
-      brand_name: this.currentProduct.brand_name,
-      price: this.currentProduct.price,
-      product_color: this.currentProduct.product_color,
-      storage: this.currentProduct.storage,
-      product_description: this.currentProduct.product_description,
-      published: status
-    };
+  // updatePublished(status: boolean): void {
+  //   const data = {
+  //     product_name: this.currentProduct.product_name,
+  //     brand_name: this.currentProduct.brand_name,
+  //     price: this.currentProduct.price,
+  //     product_color: this.currentProduct.product_color,
+  //     storage: this.currentProduct.storage,
+  //     product_description: this.currentProduct.product_description,
+  //     published: status
+  //   };
 
-    this.productService.update(this.route.snapshot.params.id, data)
-      .subscribe(
-        response => {
-          this.currentProduct.published = status;
-          console.log(response);
-          this.message = response.message ? response.message : 'The status was updated successfully!';
-        },
-        error => {
-          console.log(error);
-        });
-  }
+  //   this.productService.update(this.route.snapshot.params.id, data)
+  //     .subscribe(
+  //       response => {
+  //         this.currentProduct.published = status;
+  //         console.log(response);
+  //         this.message = response.message ? response.message : 'The status was updated successfully!';
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       });
+  // }
 
   updateProduct(): void {
     const data = {
