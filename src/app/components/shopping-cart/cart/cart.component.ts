@@ -7,10 +7,7 @@ import { MessengerService } from 'src/app/services/messenger.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  @Input() currentProduct: Product = {}
-  cartItems = [
-    
-  ];
+  cartItems: Product[] | any
 
 
   cartTotal = 0;
@@ -20,21 +17,34 @@ export class CartComponent implements OnInit {
   ngOnInit() {
    
        this.msg.getMsg().subscribe((product: Product) => {
-        console.log(product)
-        //let x = {productName: product.product_name, price: product.price}
+        this.addProductToCart(product)
+        //console.log(product)
+    })
+
+    
+  }
+
+  addProductToCart(product: Product){
+
+    for( let i in this.cartItems){
+      if(this.cartItems[i].productName === product.product_name){
+        this.cartItems[i].qty++
+      }
+
+      else{
         this.cartItems.push({
           productName: product.product_name,
           qty: 1,
           price: product.price
         })
+      }
+    }
 
-        this.cartTotal = 0;
-        this.cartItems.forEach(item => {
-          this.cartTotal += (item.qty * item.price)
-        })
 
+
+    this.cartTotal = 0;
+    this.cartItems.forEach((item: { qty: number; price: number; }) => {
+      this.cartTotal += (item.qty * item.price)
     })
-
-    
   }
 }
