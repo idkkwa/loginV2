@@ -11,7 +11,7 @@ export class AddProductComponent implements OnInit {
   product: Product = {
     product_name: '',
     brand_name: '',
-    price: '',
+    price: 0,
     product_color: '',
     storage: '',
     product_description: '',
@@ -48,7 +48,7 @@ export class AddProductComponent implements OnInit {
       this.product = {
         product_name: '',
         brand_name: '',
-        price: '',
+        price: 0,
         product_color: '',
         storage: '',
         product_description: '',

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import { AuthServiceService } from './services/auth-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
+import { Login } from '../models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -11,41 +13,86 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-   username!: string;
-   password!: string;
-   formData!: FormGroup;
+
+   
+   // username!: string;
+   // password!: string;
+   // formData!: FormGroup;
 
    model: any = {}
+   users?: Login[];
+   submitted = false;
 
-   constructor(private authService : AuthServiceService, private router : Router) { }
+   theUser: Login = {
+      username: '',
+      password: '',
+    };
+
+    message = '';
+
+   constructor(private loginService: LoginService,
+      private route: ActivatedRoute,
+      private router: Router) { }
 
    ngOnInit() {
-      this.formData = new FormGroup({
-         username: new FormControl("admin"),
-         password: new FormControl("admin"),
-      });
+      // this.formData = new FormGroup({
+      //    username: new FormControl("admin"),
+      //    password: new FormControl("admin"),
+      // });
+      this.retrieveUsers();
+      this.compareUser();
    }
+
 
    login(){
-     
-      console.log(this.model)
+      //console.log(this.model)
    }
 
-   onClickSubmit(data: any) {
-      this.username = data.username;
-      this.password = data.password;
+   retrieveUsers(): void {
+      this.loginService.getAll()
+        .subscribe(
+          data => {
+            this.users = data;
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+          });
+    }
 
-      console.log("Login page: " + this.username);
-      console.log("Login page: " + this.password);
+    compareUser(): void {
+      const data = {
+         username: this.model.username,
+         password:this.model.password,      
+      }
+  
+      this.message = '';
+      this.loginService.check(data)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.submitted = true;
+            this.message = response.message ? response.message : 'There is a match';
+          },
+          error => {
+            console.log(error);
+          });
+    }
+//    onClickSubmit(data: any) {
+//       this.username = data.username;
+//       this.password = data.password;
 
-      this.authService.login(this.username, this.password)
-         .subscribe( data => { 
-            console.log("Is Login Success: " + data); 
+//       console.log("Login page: " + this.username);
+//       console.log("Login page: " + this.password);
+
+//       this.authService.login(this.username, this.password)
+//          .subscribe( data => { 
+//             console.log("Is Login Success: " + data); 
       
-           if(data) this.router.navigate(['']); 
-      });
-   }
-}
+//            if(data) this.router.navigate(['']); 
+//       });
+//    }
+// }
 
 // export class LoginComponent implements OnInit {
 //   formGroup!: FormGroup;
@@ -74,4 +121,4 @@ export class LoginComponent implements OnInit {
 //       })
 //     }
 //   }
-// }
+ }

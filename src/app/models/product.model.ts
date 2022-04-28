@@ -2,7 +2,7 @@ export class Product {
     id?: any;
     product_name?: string;
     brand_name?: string;
-    price?: string;
+    price?: number;
     product_color?: string;
     storage?: string;
     product_description?: string;

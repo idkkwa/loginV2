@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
     id: this.route.snapshot.params.id,
     product_name: '',
     brand_name: '',
-    price: '',
+    price: 0,
     product_color: '',
     storage: '',
     product_description: '',

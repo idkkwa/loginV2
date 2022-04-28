@@ -19,12 +19,11 @@ export class CartComponent implements OnInit {
    
        this.msg.getMsg().subscribe((product: Product) => {
         this.addProductToCart(product)
-        //console.log(product)
     })
 
-    this.msg.getMsg().subscribe(product => {
-      console.log(product)
-  })
+  //   this.msg.getMsg().subscribe(product => {
+  //     console.log(product)
+  // })
   }
 
   addProductToCart(product: Product){
@@ -38,7 +37,7 @@ export class CartComponent implements OnInit {
     }
     else{
       for( let i in this.cartItems){
-        if(this.cartItems[i].productName === product.product_name){
+        if(this.cartItems[i].id === product.id){
           this.cartItems[i].qty++
         }
   
@@ -52,12 +51,8 @@ export class CartComponent implements OnInit {
       }
     }
 
-    
-
-
-
     this.cartTotal = 0;
-    this.cartItems.forEach(item => {
+    this.cartItems.forEach((item: { qty: number; price: number; }) => {
       this.cartTotal += (item.qty * item.price)
     })
   }
