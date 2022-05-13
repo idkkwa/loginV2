@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
     }
     else{
       for( let i in this.cartItems){
-        if(this.cartItems[i].id === product.id){
+        if(this.cartItems[i].productName === product.product_name){
           this.cartItems[i].qty++
         }
   

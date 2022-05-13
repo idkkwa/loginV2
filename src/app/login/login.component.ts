@@ -72,7 +72,6 @@ export class LoginComponent implements OnInit {
           response => {
             console.log(response);
             this.submitted = true;
-            this.message = response.message ? response.message : 'There is a match';
           },
           error => {
             console.log(error);
